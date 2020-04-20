@@ -8,11 +8,12 @@ import edu.xjtuse.stu.seckill.redis.prefix.BaseKeyPrefix;
  * @description
  */
 public class UserKeyPrefix extends BaseKeyPrefix {
-    public UserKeyPrefix(String prefix) {
-        super(prefix);
-    }
 
-    public UserKeyPrefix(int expireSeconds, String prefix) {
+    public static final int TOKEN_EXPIRE = 3600*24;
+
+    private UserKeyPrefix(int expireSeconds, String prefix) {
         super(expireSeconds, prefix);
     }
+
+    public static UserKeyPrefix token = new UserKeyPrefix(TOKEN_EXPIRE, "token");
 }
